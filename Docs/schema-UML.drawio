@@ -1,0 +1,48 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.2 Safari/605.1.15" version="29.2.9">
+  <diagram name="Linter UML - Phase Initiale" id="uml-initial">
+    <mxGraphModel dx="817" dy="719" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" value="UML Simplifié - Linter crypto" vertex="1">
+          <mxGeometry height="40" width="530" x="320" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="config-parser-class" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="ConfigParser" vertex="1">
+          <mxGeometry height="200" width="280" x="445" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="config-parser-attrs" parent="config-parser-class" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="- config_path: str&#xa;- config_data: dict&#xa;- schema: dict" vertex="1">
+          <mxGeometry height="54" width="280" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="config-parser-separator" parent="config-parser-class" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="8" width="280" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="config-parser-methods" parent="config-parser-class" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="+ __init__(config_path: str)&#xa;+ load_config() -&gt; dict&#xa;+ validate_schema() -&gt; bool&#xa;+ get_rules() -&gt; list&#xa;+ get_source_dirs() -&gt; list&#xa;+ get_file_patterns() -&gt; list" vertex="1">
+          <mxGeometry height="112" width="280" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="file-scanner-class" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="FileScanner" vertex="1">
+          <mxGeometry height="170" width="280" x="445" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="file-scanner-attrs" parent="file-scanner-class" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="- source_dirs: list&#xa;- file_patterns: list&#xa;- files: list" vertex="1">
+          <mxGeometry height="54" width="280" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="file-scanner-separator" parent="file-scanner-class" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="8" width="280" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="file-scanner-methods" parent="file-scanner-class" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="+ __init__(dirs: list, patterns: list)&#xa;+ scan_files() -&gt; list[str]&#xa;+ filter_files(files: list) -&gt; list[str]&#xa;+ read_file(path: str) -&gt; str" vertex="1">
+          <mxGeometry height="82" width="280" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="config-to-scanner" edge="1" parent="1" source="config-parser-class" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;" target="file-scanner-class">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="config-to-scanner-label" connectable="0" parent="config-to-scanner" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" value="&amp;lt;&amp;lt;fournit dirs/patterns&amp;gt;&amp;gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1" y="2" as="geometry">
+            <mxPoint x="-2" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note1" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;size=15;align=left;verticalAlign=top;spacingLeft=5;spacingTop=5;" value="&lt;b&gt;Phase 1: Configuration&lt;/b&gt;&lt;br&gt;• Lecture du fichier YAML&lt;br&gt;• Validation du schéma&lt;br&gt;• Extraction des paramètres" vertex="1">
+          <mxGeometry height="100" width="200" x="485" y="580" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
