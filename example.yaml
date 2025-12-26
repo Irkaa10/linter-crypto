@@ -1,0 +1,25 @@
+version: "1.0"
+
+sources:
+  directories:
+    - ./src
+    - ./tests
+  patterns:
+    - "*.py"
+  exclude:
+    - "**/__pycache__/**"
+
+rules:
+  - name: "rule1"
+    severity: "error"
+    enabled: true
+  
+  - name: "rule2"
+    severity: "warning"
+    enabled: true
+    options:
+      max: 10 # exemple
+
+output:
+  format: "console"  # console, json, html
+  verbose: true
